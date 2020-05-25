@@ -1,0 +1,19 @@
+name: TestAllApplications
+on:
+  push:
+    branches:
+      - master, dev, citest
+    tags:
+      - "!*"
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-10.14, macos-latest
+    steps:
+      - name: Run test
+        run: |
+          concurrency=$(sysctl -n hw.ncpu)
+          cat Labels.txt | parallel --halt now,fail=1 --jobs ${concurrency} --tagstring {}: ./Installomator.sh {}
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
