@@ -355,7 +355,7 @@ case $label in
     webexteams)
         # credit: Erik Stam
         name="Webex Teams"
-        type="pkgInDmg"
+        type="dmg"
         downloadURL="https://binaries.webex.com/WebexTeamsDesktop-MACOS-Gold/WebexTeams.dmg"
         expectedTeamID="DE8Y96K9QP"
         ;;
